@@ -70,7 +70,7 @@ After that, we want to add some task Details. To do this, we parse the response 
 This step is important, because although we have an `eTag` from our newly created Task, we need to get the most recent `eTag` for our Task Details.
 Parse the response from the `GET` to get the current `eTag`, then we call our `UpdateTaskDetails` method passing in the `eTag`, `token`, and `taskID`.
 
-The ``UpdateTaskDetials`` method creates the serialized JSON from a special method available on our `TaskDetails` model. This is where I configured the data needed/desired for the Task and where one would likely extend the system to have multiple versions of tasks.
+The ``UpdateTaskDetails`` method creates the serialized JSON from a special method available on our `TaskDetails` model. This is where I configured the data needed/desired for the Task and where one would likely extend the system to have multiple versions of tasks.
 With that, we call Graph at `/v1.0/planner/tasks/{taskID}/details` with a `PATCH` and our serialized Task data and await a response.
 As of this writing, there is a bug in Graph where it will return an OK resule as NoContent, which this handles.
 
